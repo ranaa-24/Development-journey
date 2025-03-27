@@ -1,0 +1,17 @@
+{
+  "name": "4.1---node-and-bun",
+  "version": "1.0.0",
+  "main": "assignment.js",
+  "scripts": {
+    "start": "node assignment.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0",
+    "express": "^4.21.2"
+  }
+}
