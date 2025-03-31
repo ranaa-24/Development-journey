@@ -2,7 +2,7 @@
 
 ## Resources
 
-- [**Express/Node introduction**](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction)
+- [**Express/Node introduction**](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Introduction) - **Great Intro**
 - [**What is Express.js?**](https://www.freecodecamp.org/news/the-express-handbook/#heading-express-middleware) - **Must Read**
 - [**How to handle POST Requests in Express**](https://dev.to/naftalimurgor/how-to-make-post-requests-in-express-2be6)
 - [**Connect frontend and backend**](https://medium.com/@anshmunjal/how-to-create-get-and-post-endpoints-in-nodejs-using-expressjs-77fd3953ec38)
@@ -281,9 +281,10 @@ app.get(
 );
 ```
 
-### check `rest_api.js` js file in *_Code_* dir for practical understanig
+### check `rest_api.js` js file in _*Code*_ dir for practical understanig
 
 # Middleware
+
 Middleware in Express.js is a function that runs between the request and the response in the request-response cycle. It has access to the request (req), response (res), and the next function that passes control to the next middleware.
 
 **"An Express Application is Essentially a Series of Middleware Function Calls"**
@@ -297,39 +298,40 @@ Middleware in Express.js is a function that runs between the request and the res
 POST Request (with some body) `->` #1 Middleware(chanaged the persons name in req.body) `-next()->` #2 Middleware (changed parsons phoneNo. in req obj) `->` app.httpMETHOD() handles that modified req object
 
 ```js
-const express = require('express');
+const express = require("express");
 const app = express();
 
 app.use(express.json()); // Built-in middleware to parse JSON the received body
 
 // 1️⃣ Middleware #1: Modify 'name' in req.body
 app.use((req, res, next) => {
-    if (req.body.name) {
-        req.body.name = 'Johnny'; // Changing name
-    }
-    next(); // Pass control to the next middleware
+  if (req.body.name) {
+    req.body.name = "Johnny"; // Changing name
+  }
+  next(); // Pass control to the next middleware
 });
 
 // 2️⃣ Middleware #2: Modify 'phoneNo' in req.body
 app.use((req, res, next) => {
-    if (req.body.phoneNo) {
-        req.body.phoneNo = '9876543210'; // Changing phone number
-    }
-    next(); // Pass control to the final route handler
+  if (req.body.phoneNo) {
+    req.body.phoneNo = "9876543210"; // Changing phone number
+  }
+  next(); // Pass control to the final route handler
 });
 
 // 3️⃣ Final Route Handler: Respond with modified req.body
-app.post('/submit', (req, res) => {
-    res.json({ message: 'Data received!', modifiedData: req.body });
+app.post("/submit", (req, res) => {
+  res.json({ message: "Data received!", modifiedData: req.body });
 });
 
 // Start the Express server
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log("Server running on port 3000"));
 ```
 
 ### **Why Use Middleware?**
 
 Middleware is used to:
+
 - ✅ Modify Requests/Responses – Add headers, parse data, etc.
 - ✅ Authentication & Authorization – Validate users before processing requests.
 - ✅ Logging & Debugging – Track requests and responses.
@@ -339,59 +341,62 @@ Middleware is used to:
 **check `middlewareEX.js` from Code dir**
 
 ## Types of middleware
+
 Middleware is added using `app.use()` or directly in route handlers..
 
-###  Application-Level Middleware (Runs for all requests)
+### Application-Level Middleware (Runs for all requests)
 
 ```js
-const express = require('express');
+const express = require("express");
 const app = express();
 
 // Middleware function
 app.use((req, res, next) => {
-    console.log('Middleware executed!');
-    next(); // Pass control to the next middleware/route
+  console.log("Middleware executed!");
+  next(); // Pass control to the next middleware/route
 });
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log("Server running on port 3000"));
 ```
 
 ### Route-Specific Middleware (Runs for specific routes)
 
 ```js
 const checkAuth = (req, res, next) => {
-    const authorized = true; // Example condition
-    if (authorized) {
-        next(); // Continue to the next function
-    } else {
-        res.status(403).send('Access Denied');
-    }
+  const authorized = true; // Example condition
+  if (authorized) {
+    next(); // Continue to the next function
+  } else {
+    res.status(403).send("Access Denied");
+  }
 };
 
-app.get('/dashboard', checkAuth, (req, res) => {
-    res.send('Welcome to the Dashboard');
+app.get("/dashboard", checkAuth, (req, res) => {
+  res.send("Welcome to the Dashboard");
 });
 ```
-###  Built-in Middleware (Already available in Express)
- Body Parsing Middleware:
 
-  - `express.json():` Parses incoming JSON data from requests.
-  - `express.urlencoded():` Parses incoming URL-encoded data from forms.
+### Built-in Middleware (Already available in Express)
+
+Body Parsing Middleware:
+
+- `express.json():` Parses incoming JSON data from requests.
+- `express.urlencoded():` Parses incoming URL-encoded data from forms.
 
 Static File Middleware:
 
-  - `express.static():` Serves static files such as HTML, CSS, and images.
+- `express.static():` Serves static files such as HTML, CSS, and images.
 
 Session Middleware:
 
-  - `express-session:` Enables session management in Express applications.
+- `express-session:` Enables session management in Express applications.
 
 ```js
-const express = require('express');
+const express = require("express");
 const app = express();
 
 // Internal middleware for parsing JSON and URL-encoded data
@@ -399,17 +404,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Example route handling parsed data
-app.post('/example', (req, res) => {
+app.post("/example", (req, res) => {
   console.log(req.body); // Access parsed data
-  res.send('Data received!');
+  res.send("Data received!");
 });
 
 app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+  console.log("Server is running on port 3000");
 });
 ```
-
-
 
 ### Error-Handling Middleware
 
@@ -420,23 +423,24 @@ Used to catch errors and respond properly.
 When an error is thrown, Express skips any remaining middleware and directly calls the error-handling middleware.
 
 ```js
-const express = require('express');
+const express = require("express");
 const app = express();
 
 // Route handler that throws an error
-app.get('/error', (req, res) => {
-    throw new Error("Something broke!");  // Automatically passed to error middleware
-    res.send("This will never run");      // Never executes
+app.get("/error", (req, res) => {
+  throw new Error("Something broke!"); // Automatically passed to error middleware
+  res.send("This will never run"); // Never executes
 });
 
 // Error-handling middleware
 app.use((err, req, res, next) => {
-    console.log("Caught an error");
-    res.status(500).json({ msg: err.message });
+  console.log("Caught an error");
+  res.status(500).json({ msg: err.message });
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+app.listen(3000, () => console.log("Server running on port 3000"));
 ```
+
 ## sometimes we need `next(error)`..
 
 **1️⃣ Asynchronous Errors (Inside `async` Functions)**
@@ -444,24 +448,22 @@ app.listen(3000, () => console.log('Server running on port 3000'));
 Express does NOT catch async errors automatically. You must use next(error).
 
 ```js
-app.get('/async-error', async (req, res, next) => {
-    try {
-        throw new Error("Async error occurred!");
-    } catch (error) {
-        next(error); // MUST use next(error) for async errors
-    }
+app.get("/async-error", async (req, res, next) => {
+  try {
+    throw new Error("Async error occurred!");
+  } catch (error) {
+    next(error); // MUST use next(error) for async errors
+  }
 });
 ```
+
 **2️⃣ If Middleware Needs to Manually Pass an Error**
 
-  If an error occurs inside a **normal middleware function**, you must explicitly call next(error).
+If an error occurs inside a **normal middleware function**, you must explicitly call next(error).
 
 ```js
 app.use((req, res, next) => {
-    const err = new Error("Something went wrong in middleware!");
-    next(err); // Must be passed explicitly
+  const err = new Error("Something went wrong in middleware!");
+  next(err); // Must be passed explicitly
 });
 ```
-
-
-
