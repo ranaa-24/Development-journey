@@ -4,6 +4,8 @@
 
 [Atlassian Git Tutorials](https://www.atlassian.com/git/tutorials/what-is-version-control)
 
+[Git Work Flow](https://dev.to/mollynem/git-github--workflow-fundamentals-5496)
+
 ## 1. Introduction to Git
 
 - Git is a distributed version control system used to track changes in source code during software development. It allows multiple developers to collaborate on a project and keeps track of the history of changes.
@@ -21,6 +23,8 @@
 - **Pull Request (PR):** A GitHub feature that allows you to request a code review and merge changes from one branch to another.
 
 ## 3. Git Workflow
+
+![alt text](image.png)
 
 ### Create or Clone a Repository
 

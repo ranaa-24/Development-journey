@@ -17,15 +17,12 @@
 - [**package-lock.json: The Complete Guide**](https://medium.com/pavesoft/package-lock-json-the-complete-guide-2ae40175ebdd)
 - [**Difference between package.json and package-lock.json**](https://umarfarooquekhan.medium.com/difference-between-package-json-and-package-lock-json-6225f83f247c)
 
-## GitHub Link
-
-- [**Node.js**](https://github.com/nodejs/node)
-- [**Bun**](https://github.com/oven-sh/bun)
-- [**NPM**](https://github.com/npm)
-- [**Chalk**](https://github.com/chalk/chalk)
-
 <br>
 <br>
+
+![alt text](image-1.png)
+
+---
 
 ## To initialize a Node.js project locally,
 
