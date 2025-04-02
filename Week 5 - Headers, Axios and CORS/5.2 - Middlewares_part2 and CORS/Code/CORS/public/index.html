@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading">I am Front End</h1>
+    <button id="btn">Click to chage from server</button>
+
+    <script type="module">
+        // throws an CORS error
+        let res = await fetch('http://localhost:3000/user');
+        let data = await res.text();
+
+        btn.onclick = () => heading.innerHTML = data;
+    </script>
+
+</body>
+</html>
