@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="signup">
+      Sign Up:
+      <label for="signup-username">Username </label>
+      <input type="text" placeholder="Username" id="signup-username" />
+      <label for="signup-password">Password </label>
+      <input type="password" placeholder="password" id="signup-password" />
+      <input type="submit" onclick="signup()" />
+    </div>
+    <div class="signin">
+      Sign In:
+      <label for="signin-username">Username </label>
+      <input type="text" placeholder="username" id="signin-username" />
+      <label for="signin-pass">Password </label>
+      <input type="password" placeholder="password" id="signin-password" />
+      <input type="submit" onclick="signin()" />
+    </div>
+
+    <div>
+      User Information:
+      <div id="userInfo"></div>
+    </div>
+
+    <button onclick="aboutMe()">About me</button>
+    <button onclick="logout()">Log Out</button>
+
+    <script>
+      const info = document.getElementById("userInfo");
+
+      // hit http://localhost:3000/singup
+      const signup = async () => {
+        const signup_password =
+          document.getElementById("signup-password").value;
+        const signup_username =
+          document.getElementById("signup-username").value;
+        try {
+          // any success response frm the server will serve as response in axios, and any error like (status 4xx)
+          // will be serve in catch(err);
+          let response = await axios.post("http://localhost:3000/signup", {
+            uname: signup_username,
+            password: signup_password,
+          });
+          let resSendByServer = response.data;
+          info.innerText = resSendByServer;
+        } catch (err) {
+          // any error msg send by server will be available in here
+          let errorRes = err.response.data; // as json send by server
+          alert(JSON.stringify(errorRes));
+        }
+      };
+
+      // hit http://localhost:3000/singin
+      const signin = async () => {
+        const signin_username =
+          document.getElementById("signin-username").value;
+        const signin_password =
+          document.getElementById("signin-password").value;
+
+        // lets try fetch localhost:3000/signin
+        let response = await fetch("http://localhost:3000/signin", {
+          method: "POST",
+          headers: {
+            // its necessary o/w the server wont be able to parse as json even as express.json is defined, thats why axios is better
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            uname: signin_username,
+            password: signin_password,
+          }),
+        });
+
+        if (response.ok) {
+          info.innerHTML = await response.text();
+          const token = response.headers.get("token");
+          localStorage.setItem("token", token);
+        } else {
+          let errorData = await response.json();
+          alert(JSON.stringify(errorData));
+        }
+      };
+
+      // we have got the token saved
+      const aboutMe = async () => {
+        token = localStorage.getItem("token");
+
+        try {
+          let response = await axios.get("http://localhost:3000/me", {
+            headers: {
+              authenticate: token,
+            },
+          });
+          let data = response.data;
+          info.innerText = `Username : ${data.uname}
+                            Password : ${data.password}`;
+        } catch (err) {
+          alert(JSON.stringify(err.response.data));
+        }
+      };
+
+      const logout = () => {
+        if (!localStorage.getItem("token"))
+          return alert("Please log in first Bitz!");
+        info.innerHTML = "";
+        localStorage.removeItem("token");
+        alert("You have logged out.");
+      };
+    </script>
+  </body>
+</html>
