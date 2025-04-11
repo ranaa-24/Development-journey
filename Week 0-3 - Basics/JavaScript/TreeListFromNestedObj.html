@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #212121;
+        color: #fff;
+      }
+
+      h1 {
+        font-size: 50px;
+        text-align: center;
+        margin-bottom: 5rem;
+      }
+
+      #container{
+        font-size: 30px;
+        color: rgb(222, 255, 162);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tree Structure from given nested objects</h1>
+    <div id="container"></div>
+
+    <script>
+      // assign a nested object
+      let obj = {
+        Fish: {
+          trout: {},
+          salmon: {},
+        },
+
+        Tree: {
+          Huge: {
+            sequoia: {},
+            oak: {},
+          },
+          Flowering: {
+            "apple tree": {},
+            magnolia: {},
+          },
+        },
+      };
+
+      function createTree(container, obj) {
+        container.append(getTreeFrom(obj));
+      }
+
+      function getTreeFrom(obj) {
+        if (!Object.keys(obj).length) return; //end point, no more keys
+
+        let ul = document.createElement("ul");
+
+        for (let key in obj) {
+          let li = document.createElement("li");
+          li.textContent = key;
+
+          let childrenUl = getTreeFrom(obj[key]); // get the tree from current obj ie. child objs
+
+          if (childrenUl) {
+            li.append(childrenUl);
+          }
+
+          ul.append(li);
+        }
+
+        return ul; // it will appended in  container.append(getTreeFrom(obj))
+      }
+
+      let container = document.getElementById("container");
+      createTree(container, obj);
+    </script>
+  </body>
+</html>

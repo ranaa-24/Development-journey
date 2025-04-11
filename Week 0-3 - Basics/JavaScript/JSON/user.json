@@ -1,0 +1,24 @@
+{
+    "user": {
+        "name" : "Rana", 
+        "age" : 25, 
+        "city" : "kolkata", 
+        "isAdult" : true
+    },
+    
+    "users": [
+        {
+            "name" : "Rana", 
+            "age" : 25, 
+            "city" : "kolkata", 
+            "isAdult" : true
+        },
+        {
+            "name" : "Rana", 
+            "age" : 25, 
+            "city" : "kolkata", 
+            "isAdult" : true
+        }
+    ]
+}
+

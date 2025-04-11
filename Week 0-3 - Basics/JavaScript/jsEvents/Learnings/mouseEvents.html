@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #ele{
+            height: 100px;
+            width: 300px;
+            background-color:rgb(4, 255, 255);
+        }
+    </style>
+</head>
+<body>
+    <div id="ele"></div>
+    <input id="btn" onmousemove="this.value = event.clientX + ':' + event.clientY" value="hover me">
+
+    <br>
+    <button id="btn2">Click</button>
+    <br>
+    <textarea name="infos" id="field" rows="10" cols="50"></textarea>
+
+    <p id="text">You cant select me..</p>
+
+    <script>
+        let btn2 = document.getElementById('btn2');
+        let field = document.getElementById('field');
+
+        
+
+        btn2.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+        })
+
+        btn2.addEventListener('mousedown', (event) => {
+            event.preventDefault();
+            field.innerHTML += `Button Clicked - ${event.button + '\n'}`;
+        })
+
+        document.getElementById('text').onmousedown = function(event){
+            return false;
+        }
+    </script>
+</body>
+</html>

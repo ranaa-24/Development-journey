@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="progress">111</div>
+
+    <script>
+        let i = 0;
+        function increase(){
+            // NOTE: changes to DOM are painted only after the currently running task is completed, irrespective of how long it takes.
+            // we'll chunk the task(increment) with 1000 increase, after 1000 increment the page will update
+            
+            do{
+                i++;
+            }while(i % 1e3 != 0);       
+
+            progress.innerHTML = i; // the page will update after each 1000 increase
+
+            if(i<1e7){
+                setTimeout(increase);   // again call the function, comming from calback queue
+            }
+        }
+
+        increase();
+    </script>
+</body>
+</html>

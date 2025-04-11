@@ -1,0 +1,102 @@
+*, *::after, *::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #212121;
+    color: #fff;
+}
+
+.wrapper{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: 70%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: -30px;
+    color: rgb(214, 156, 255);
+}
+
+p{
+    text-align: center;
+}
+
+.form label, input{
+    display: block;
+}
+
+.form{
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: wheat; */
+    border: 2px solid wheat;
+    padding: 20px;
+}
+#guess{
+    text-align: center;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+#guessField{
+    margin: 0 auto;
+    width: 200px;
+    padding: 8px;
+    outline: none;
+    border-radius: 5px;
+    font-size: 17px;
+    text-align: center;
+    margin: 10px 0;
+    border: 3px solid #5e5e5e;
+}
+
+#guessField:hover{
+    border: 3px solid #658637;
+}
+#guessField:focus{
+    border: 3px solid rgb(255, 100, 100);
+}
+
+
+#submit{
+    padding: 8px 18px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.resultPara{
+    margin-top: 10px;
+}
+
+.resultPara p{
+    text-align: left;
+}
+
+.congrats{
+    height: 173.6px;
+    width:  177px;
+    /* background-color: wheat; */
+    background: url(./congrats.gif);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: none;
+    margin: 10px 0;
+}
+

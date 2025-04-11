@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO</title>
+    <style>
+        body{
+            background-color: #212121;
+            color: #fff;
+        }
+
+        h1{
+            font-size: 50px;
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>Yous TODOs</h1>
+
+    <script>
+        let ul = document.createElement('ul');
+        document.body.append(ul);
+
+        while(true){
+            let task = prompt("(Esc or Empty to end)\nTask:", "");
+            if(!task) break;
+
+            let li = document.createElement('li');
+            li.textContent = task;
+            ul.append(li);
+        }
+    </script>
+</body>
+
+
+</html>

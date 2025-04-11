@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booie Boo</title>
+    <style>
+      :root {
+        font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      }
+
+      *{
+        box-sizing: border-box;
+      }
+      .color {
+        min-height: 78px;
+        max-width: 200px;
+        border: 1px solid;
+      }
+      #water {
+        height: 250px;
+        max-width: 500px;
+        background: url("./water.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: relative;
+        border: 5px solid slategrey;
+      }
+
+      .background {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: black;
+        cursor: pointer;
+        filter: opacity(0.5);
+      }
+
+      #boat {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 50px;
+        width: 50px;
+        background: url("./paperBoat.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        filter: drop-shadow(0px 5px 15px rgba(0, 0, 0, 0.35));
+        transition: 1s all;
+      }
+
+      #phone {
+        width: 230px;
+        height: 400px;
+        background: url("./wallpaper.webp");
+        background-size: cover;
+        border: 4px solid black;
+        color: white;
+      }
+
+      .noti {
+        position: relative;
+        background-color: rgba(0, 0, 0, 0.521);
+        margin: 0;
+        padding: 5px;
+        margin-bottom: 3px;
+      }
+
+      #phone h4 {
+        color: pink;
+        margin: 0;
+      }
+
+      p {
+        margin: 5px;
+      }
+
+      .remove-button {
+        position: absolute;
+        top: 0;
+        right: 5px;
+        background: transparent;
+        cursor: pointer;
+        outline: none;
+        border: none;
+        color: rgba(255, 52, 52, 0.792);
+        font-weight: 600;
+        font-size: 110%;
+      }
+
+      #phone2 {
+        width: 230px;
+        height: 400px;
+        background-color: #2a2a2a;
+        background-size: cover;
+        border: 4px solid black;
+        color: white;
+        overflow: hidden;
+        position: relative;
+      }
+
+      #spreadBtn {
+        padding: 7px;
+        margin-top: 10px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        background: transparent;
+        outline: none;
+        border: 2px solid pink;
+        font-weight: 500;
+        cursor: pointer;
+        border-radius: 10px;
+        color: rgb(255, 255, 255);
+      }
+
+      #phone2 h4 {
+        color: pink;
+        margin: 0;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+
+      #photos {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3px;
+      }
+
+      #photos #pics {
+        aspect-ratio: 1;
+        background-size: cover;
+        background-position: top;
+        cursor: pointer;
+      }
+
+      .img {
+        filter: grayscale(100%);
+      }
+
+      .img1 {
+        background: url(img1_files/img3.jpg);
+      }
+
+      .img2 {
+        background: url(img1_files/img1.webp);
+      }
+
+      .img3 {
+        background: url(img1_files/img2.webp);
+      }
+
+      .img4 {
+        background: url(img1_files/img8.webp);
+      }
+
+      .highlight {
+        filter: grayscale(0%);
+      }
+
+      .list {
+        height: 50vh;
+      }
+
+      .tree {
+        font-size: larger;
+      }
+
+      #info p,
+      legend {
+        padding: 5px;
+        font-size: large;
+      }
+
+      #info {
+        width: 50%;
+      }
+      #image {
+        border-radius: 50%;
+      }
+     
+
+      #pc{
+        width: 50%;
+        height: 400px;
+        background-color: red;
+        position: relative;
+        background: url('./PC_Wallpapers/wallpaper1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      #choseWallpaper{
+        width: 40%;  
+        height: 15%;
+        background-color: rgba(0, 0, 0, 0.427);
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 15px;
+      }
+      
+      .wallpaper{
+        height: 70%;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        padding: 5px;
+        border: 1px solid rgb(255, 255, 255);
+        cursor: pointer;
+        transition: .3s all;
+        box-sizing: border-box;
+      }
+
+      .wallpaper:hover{
+        border: 1.5px solid rgb(246, 255, 0);
+        
+      }
+      
+      .wallpaper1{
+       background:url('./PC_Wallpapers/wallpaper2.jpg');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+     }
+      .wallpaper2{
+       background:url('./PC_Wallpapers/wallpaper3.jpg');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+     }
+      .wallpaper3{
+       background:url('./PC_Wallpapers/wallpaper4.jpg');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+     }
+      .wallpaper4{
+       background:url('./PC_Wallpapers/wallpaper5.jpg');
+       background-size: cover;
+       background-position: center;
+       background-repeat: no-repeat;
+     }
+
+     #friends li{
+      cursor: pointer;
+     }  
+
+     .selectedFriend{
+      background-color: rgb(103, 255, 103);
+     }
+
+    </style>
+  </head>
+  <body>
+    <h1 id="heading">Hello, Onii-chan.</h1>
+    <form action="#">
+      <label for="input" id="label">I call you by?</label>
+      <br />
+      <input
+        type="text"
+        name="ip"
+        id="input"
+        onmousedown="this.value = 'Onii-Chan'"
+      />
+      <br />
+      <label for="age">Size: <span id="ageVal"></span></label>
+      <br />
+      <input type="range" id="age" name="age" min="2" max="9" value="2" />
+      <br />
+      <input type="submit" name="btn" id="btn" value="Submit" />
+    </form>
+    <br />
+    <br />
+    <h3>What color dress should I wear tonight?</h3>
+    <div class="color">
+      <button id="changeColor">Change</button>
+    </div>
+    <br />
+    <h3>Onii-chan, i got something to show you.. 👉👈</h3>
+    <a id="videoLink" href="https://social.mtdv.me/watch?v=my-private-video"
+      >my-private-video</a
+    >
+
+    <br />
+    <h3>This my friend, Lucy.</h3>
+    <img
+      id="lucy"
+      src="./lucy.png"
+      alt="lucy"
+      height="230"
+      style="cursor: pointer"
+    />
+
+    <br />
+    <h3>Wanna play paper boat with me?</h3>
+    <div id="water">
+      <!-- background - is just so we can add a dark layer to water -->
+      <div class="background"></div>
+      <div id="boat"></div>
+    </div>
+    <br />
+
+    <h3>Ops! My friends are spamming after seeing you.</h3>
+    <div id="phone">
+      <div class="noti">
+        <h4>Amie</h4>
+        <p>Ahh senpiee! squirt my little cat 😻💦</p>
+      </div>
+      <div class="noti">
+        <h4>Lotie</h4>
+        <p>uff! he is so fine i wanna sarve my cake to him to distroy 😫</p>
+      </div>
+      <div class="noti">
+        <h4>juli</h4>
+        <p>ill dominate! but if he does ill die comming 💦</p>
+      </div>
+    </div>
+
+    <br />
+    <br />
+
+    <h3>Senpai take a look of my Gallery</h3>
+    <div id="phone2">
+      <h4>Gallery</h4>
+      <div id="photos">
+        <div id="pics" class="img1 img"></div>
+        <div id="pics" class="img2 img"></div>
+        <div id="pics" class="img3 img"></div>
+        <div id="pics" class="img4 img"></div>
+      </div>
+      <button id="spreadBtn">Spread</button>
+    </div>
+
+    <br />
+    <br />
+    <br />
+
+    <!-- counter -->
+    <form action="" id="noty">
+      <h3>
+        How may protections?
+        <input type="button" value="1" data-counter />
+        And Wine? <input type="button" value="0" data-counter />
+      </h3>
+    </form>
+
+    <br />
+
+    <!-- toggoler -->
+    <h3>subscribe to my onlyPan cooking.. where i cook or get cooked.</h3>
+    <!-- cuppon code -->
+    <h5> Here is cupon code (but u cant select it, by clicking Upon): <p style="display: inline-block;" id="cupon">XYZOniiGirl#123</p></h4>
+
+    <button data-toggle-id="subscribe" id="toggle">
+      OnlyPan subscription form
+    </button>
+    <form action="#" id="subscribe" style="margin-top: 12px" hidden>
+      Your mail : <input type="email" />
+    </form>
+    <br />
+    <br />
+    <br />
+
+    <!-- watch list -->
+    <h3>onii-chan i made a watch list for our next date.</h3>
+    <div class="list">
+      <ul class="tree" id="tree">
+        <!-- we could warp the list in span so that click and style applies to only text not the whole block -->
+        <li>
+          Movies
+          <ul>
+            <li>
+              Rom-Com
+              <ul>
+                <li>The Notebook</li>
+                <li>Pride and Prejudice</li>
+                <li>La La Land</li>
+                <li>Before Sunrise</li>
+              </ul>
+            </li>
+            <li>
+              Horror
+              <ul>
+                <li>The Conjuring</li>
+                <li>Insidious</li>
+                <li>Hereditary</li>
+                <li>Get Out</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li>
+          Anime
+          <ul>
+            <li>
+              hentai
+              <ul>
+                <li>Guppy</li>
+                <li>Angelfish</li>
+              </ul>
+            </li>
+            <li>
+              wholesome
+              <ul>
+                <li>Sea trout</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <!-- Links -->
+    <fieldset id="info">
+      <legend>How I feel for you?</legend>
+      <p>
+        Umm.. ahm Its-Its ur
+        <a href="https://hinative.com/questions/11932083" title="Meaing"
+          >ochinchin</a
+        >
+        Its <a href="https://jisho.org/search/ookii" title="Meaing">Ookii</a> I
+        wanna lick it..
+      </p>
+    </fieldset>
+
+    <br />
+    <br />
+
+    <!-- wallpaper -->
+    <h3>Set a Wallpaper for my PC</h3>
+    <div id="pc">
+      <div id="choseWallpaper">
+       <div class="wallpaper wallpaper1"  data-src="./PC_Wallpapers/wallpaper2.jpg"></div>
+       <div class="wallpaper wallpaper2" data-src="./PC_Wallpapers/wallpaper3.jpg"></div>
+       <div class="wallpaper wallpaper3" data-src="./PC_Wallpapers/wallpaper4.jpg"></div>
+       <div class="wallpaper wallpaper4" data-src="./PC_Wallpapers/wallpaper5.jpg"></div>
+      </div>
+    </div>
+
+    <br />
+    <br />
+    <!-- Multiple selections -->
+    <h3>Chose some of my friends to play with (ctrl+click for multiple) </h3>
+    <ul id="friends">
+      <li>Lucy</li>
+      <li>Kirty</li>
+      <li>Jice</li>
+      <li>Sytic</li>
+      <li>pu-C</li>
+    </ul>
+
+
+    <br />
+    <br />
+    <h2 id="subheading">Developed By Boo</h2>
+    <img
+      src="./image.jpg"
+      alt="boo"
+      height="150"
+      id="image"
+      style="cursor: pointer"
+    />
+
+    <script>
+      // dynamic range changes
+      setInterval(() => {
+        document.getElementById("ageVal").innerHTML =
+          document.getElementById("age").value + " inch";
+      }, 1);
+
+      //onclick on image obj
+      document.getElementById("image").onclick = function () {
+        let dont = document.createElement("h3");
+        dont.style.display = "inline-block";
+        dont.innerHTML = "You Freak! dont touch meehh";
+        document.getElementById("image").after(dont);
+        setTimeout(() => {
+          dont.style.display = "none";
+          // or just
+          // dont.remove();
+        }, 1000);
+      };
+      document
+        .getElementById("image")
+        .addEventListener("contextmenu", () =>
+          alert("Bitch! You wanna take me home or what?")
+        );
+
+      //color changer
+      function random(range) {
+        return Math.random() * (range + 1);
+      }
+
+      let colorBtn = document.querySelector("#changeColor");
+      colorBtn.addEventListener("click", changeColor);
+
+      function changeColor() {
+        let colorBox = document.getElementsByClassName("color")[0];
+        colorBox.style.backgroundColor = `rgb(${random(255)} ${random(
+          255
+        )} ${random(255)})`;
+      }
+
+      //preventing default of anchore
+      document.getElementById("videoLink").addEventListener("click", (e) => {
+        e.preventDefault();
+      });
+
+      //lucy position
+      let ele = document.getElementById("lucy");
+      let printPosition = {
+        handleEvent(e) {
+          // it will look for handleEvent method
+          let box = document.createElement("div");
+          let prompt =
+            "<h4 style= 'display:inline'> You Touched her at - </h4>" +
+            "pageX : " +
+            e.pageX +
+            " || clientX : " +
+            e.clientX +
+            " || screenX : " +
+            e.screenX;
+          box.innerHTML = prompt;
+          ele.after(box);
+          setTimeout(() => {
+            box.remove();
+          }, 4000);
+        },
+      };
+      ele.addEventListener("click", printPosition);
+
+      //papper boat floating  (logic js.info > intro to event, practice sections)
+      let water = document.querySelector("#water");
+      let boat = document.querySelector("#boat");
+
+      water.onclick = function (e) {
+        let waterCoords = this.getBoundingClientRect();
+
+        let boatCoords = {
+          top:
+            e.clientY -
+            waterCoords.top -
+            water.clientTop -
+            boat.clientHeight / 2,
+          left:
+            e.clientX -
+            waterCoords.left -
+            water.clientLeft -
+            boat.clientWidth / 2,
+        };
+
+        if (boatCoords.top < 0) boatCoords.top = 0;
+
+        if (boatCoords.left < 0) boatCoords.left = 0;
+
+        if (boatCoords.left + boat.clientWidth > water.clientWidth) {
+          boatCoords.left = water.clientWidth - boat.clientWidth;
+        }
+
+        if (boatCoords.top + boat.clientHeight > water.clientHeight) {
+          boatCoords.top = water.clientHeight - boat.clientHeight;
+        }
+
+        boat.style.left = boatCoords.left + "px";
+        boat.style.top = boatCoords.top + "px";
+      };
+
+      //notifications
+      let notifications = document.querySelectorAll(".noti");
+      for (let notification of notifications) {
+        notification.insertAdjacentHTML(
+          "afterbegin",
+          '<button title="close" class="remove-button">[x]</button>'
+        );
+        notification.firstChild.onclick = () => notification.remove();
+      }
+
+      // Gallery
+      const photos = document.getElementById("photos");
+      const phone2 = document.getElementById("phone2");
+      let selectedImg;
+      photos.onclick = (e) => {
+        let target = e.target;
+        if (target.tagName != "DIV") return;
+        highlight(target);
+        e.stopPropagation();
+      };
+
+      const spreadBtn = document.querySelector("#spreadBtn");
+      let isShrinked = false;
+      spreadBtn.onclick = function(e){
+        if(isShrinked){
+          phone2.style.overflow = '';
+          photos.style.gridTemplateColumns = "";
+          this.innerHTML = "Spread";
+          isShrinked = false;
+          return;
+        }
+        phone2.style.overflow = 'scroll';
+        photos.style.gridTemplateColumns = "repeat(1, 1fr)";
+        this.innerHTML = "Shrink";
+        isShrinked = true;
+      }
+
+      function highlight(img) {
+        if (selectedImg) selectedImg.classList.remove("highlight");
+        selectedImg = img;
+        selectedImg.classList.add("highlight");
+      }
+
+      phone2.onclick = () => {
+        if (selectedImg) selectedImg.classList.remove("highlight");
+      };
+
+      //counter
+      const form = document.getElementById("noty");
+      form.addEventListener("click", (e) => {
+        if (e.target.dataset.counter != undefined) {
+          e.target.value++;
+        }
+      });
+
+      //toggoler
+      document.getElementById("toggle").onclick = (e) => {
+        let id = e.target.dataset.toggleId;
+        if (!id) return;
+
+        let ele = document.getElementById(id);
+        ele.hidden = !ele.hidden;
+      };
+
+      //onlypan cupon code 
+      document.getElementById('cupon').onmousedown = function(){
+        return false;
+      }
+
+
+      //watch list
+      document.getElementById("tree").onclick = (e) => {
+        if (e.target.tagName != "LI") return;
+        let childContainer = e.target.querySelector("ul");
+        if (!childContainer) return; // no child;
+        childContainer.hidden = !childContainer.hidden;
+      };
+
+      //redirect conformations
+      const content = document.querySelector("#info");
+      content.addEventListener("click", (e) => {
+        let target = e.target.closest("a"); //target should be A tag
+        if (target) {
+          let href = target.getAttribute("href");
+          let isLeaving = confirm(`Leave for ${href} ?`);
+          if (!isLeaving) e.preventDefault();
+        }
+      });
+
+      //Image Background change 
+      let selectedWallpaper = null;
+      let pc = document.getElementById('pc');
+
+      document.getElementById('pc').onclick = function(event){
+        let wallpaper = event.target;
+        if(wallpaper.classList[0] != 'wallpaper') return;
+        
+        if(selectedWallpaper) selectedWallpaper.style.border = '';
+        selectedWallpaper = wallpaper;
+        selectedWallpaper.style.border = '1.5px solid red';
+        changeBG(wallpaper.dataset.src);
+      }
+
+      function changeBG(src){
+        pc.style.background =`url(${src})`;
+        pc.style.backgroundSize = 'cover';
+        pc.style.backgroundRepeat = 'no-repeat';
+      }
+
+      //Multiple selections
+      const friendsUL = document.getElementById('friends');
+
+      friendsUL.onclick = function(event){
+        if(event.target.tagName != "LI") return;
+        if(event.ctrlKey || event.metaKey){
+          toggleSelect(event.target);
+        }
+        else{
+          singleSelect(event.target);
+        }
+      }
+
+      //preventing unwanted selection on double click 
+      friendsUL.onmousedown = function(){
+        return false;
+      }
+
+      function toggleSelect(elem){
+        elem.classList.toggle('selectedFriend');
+      }
+
+      function singleSelect(elem){
+        let selected = document.querySelectorAll('.selectedFriend');
+        //remove the stylr from all selected ele
+        for(let selectedElem of selected){
+          selectedElem.classList.remove('selectedFriend');
+        } 
+
+        elem.classList.add('selectedFriend');
+      }
+
+    </script>
+  </body>
+</html>

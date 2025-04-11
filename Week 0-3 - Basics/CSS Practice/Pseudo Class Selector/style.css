@@ -1,0 +1,48 @@
+
+a:hover{
+    background-color: aquamarine;
+}
+
+a:link{
+    color: blue;
+}
+
+a:visited{
+    color: blueviolet;
+}
+
+a:active{
+    color:rgb(164, 164, 249)
+}
+
+/* form another address      // 2n - even pos, 2n-1 - odd ppos */
+ /*aplied to all p tags under the div.box*/ 
+div.box p:nth-child(2n){    
+    color: brown;
+}
+
+/*only apply to its child not all decendents*/
+/*only will aply if there is p tag in position 2nd*/
+/* div.box > p:nth-child(2){      
+    color: violet;
+}*/
+
+.btn{
+    width: 100px;
+    height: 30px;
+    background-color:  rgb(194, 236, 255);
+    border: solid rgb(120, 120, 255);
+}
+
+.btn:hover{
+    font-size: 17px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    font-style:unset;
+}
+
+.btn:active{
+    letter-spacing: 10px;
+    background-color: rgb(87, 255, 238);
+    border: 3px solid violet;
+}

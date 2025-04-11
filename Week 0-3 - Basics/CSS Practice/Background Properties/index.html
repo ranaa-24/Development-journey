@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Properties</title>
+    <style>
+        body{
+            background-color: rgb(210, 206, 214);
+            color: rgb(255, 255, 255);
+        }
+        
+        .heading{
+            background-color: rgba(178, 67, 252, 0.829);
+            text-align: center;
+        }
+
+        .box{
+            background-color: #9258d3;
+            padding: 12px;
+            margin: 20px;
+            width: 200px;
+            height: 150px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            font-size:xx-large
+        }
+
+        .box:hover{
+            box-shadow: 0 8px 16px 0 rgba(80, 26, 26, 0.5);
+            transition: 0.3s;
+            width: 180px;
+            height: 130px;
+            opacity: 0.8;
+        }
+
+        #cat{
+            background-image: url("cat.webp");
+            /* resize the background img */ 
+            /*better put this in box class*/
+            background-size: cover;
+            background-position: 60%;
+        }
+
+        #dog{
+            background-image: url("dog.jpg");
+            /* resize the background img */ 
+            /*better put this in box class*/
+            background-size: 250px 175px;
+            background-position: center;
+        }
+
+        #rabbit{
+            background-image: url("rabbit.webp");
+            /* resize the background img */ 
+            /*better put this in box class*/
+            background-size: 250px 175px;
+            background-position: center;
+        }
+
+        
+    </style>
+
+</head>
+<body>
+    <h1 class="heading">Background Properties</h1>
+    
+    <center>
+    <div class="box" id="cat">Cats</div>
+    <div class="box" id="dog">Dogs</div>
+    <div class="box" id="rabbit">Rabbits</div>
+    </center>
+
+
+</body>
+</html>

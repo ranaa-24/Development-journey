@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action=""> FROM
+        <div>DIV
+            <h1>H1</h1>
+        </div>
+    </form>
+
+
+    <script>
+      for(let ele of document.querySelectorAll('*')){
+        ele.addEventListener('click', () => console.log(`Capturing : ${ele.tagName}`), true);
+        ele.addEventListener('click', () => console.log(`Bubbling : ${ele.tagName}`));
+        
+      }
+    </script>
+  </body>
+</html>

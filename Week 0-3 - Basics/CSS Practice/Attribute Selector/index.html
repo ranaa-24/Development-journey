@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display:flex;
+        }
+
+        [required]{
+            border: 1px solid red;   
+        }
+
+        :required:hover{
+            border: 2px solid violet;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="#">
+        <label for="name">name : </label>
+        <input type="text" id="name">
+        <label for="mail">Mail : </label>
+        <input type="mail" id="mail" required>
+        <label for="pass">Password : </label>
+        <input type="password" id="pass" required>
+    </form>
+
+</body>
+</html>

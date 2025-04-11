@@ -1,0 +1,44 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+main{
+    width: 100%;
+    background-color: rgb(254, 169, 249);
+}
+
+nav{
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* 1. @media <for what> and <size>{
+
+}
+
+<for what> = screen, speech, print, all
+
+NOTE: by default the <for what> is set to "all"
+
+<size> = most commonly the maximum size to apply some certain design */
+
+/* orientation...
+
+by default the orientation is potrait (height > width)
+
+other value is landscape (width > height) */
+/* 
+@media (orientation: landscape){
+    body{
+        background-color: red;
+    }
+} */
+
+
+
+@media all and (max-width: 320px){
+    
+}

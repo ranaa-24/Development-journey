@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn">Stop</button>
+  </body>
+  <script>
+    function randomNum(range) {
+      return ~~(Math.random() * range + 1);
+    }
+
+    let intervalID;
+
+    document.querySelector("#startBtn").addEventListener("click", () => {
+      //NOTE: if we click the start btn multiple times that will create multiple intervals and old intervals will not be cleared.. so, its imp to clear the existing one before staring new one..
+      if (intervalID) {
+        clearInterval(intervalID);
+      }
+      intervalID = setInterval(() => {
+        document.getElementsByTagName(
+          "body"
+        )[0].style.backgroundColor = `rgb(${randomNum(255)} ${randomNum(
+          255
+        )}, ${randomNum(255)})`;
+      }, 0);
+    });
+
+    document.querySelector("#stopBtn").addEventListener("click", () => {
+      clearInterval(intervalID);
+    });
+  </script>
+</html>

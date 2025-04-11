@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <button id="btn" onclick="alert('Clicked ' + event.isTrusted)">Click</button>
+
+    <h1 id="elem">Hello from script..</h1> -->
+    <pre id="rabbit">
+        |\   /|
+         \|_|/
+         /. .\
+        =\_Y_/=
+         {>o<}
+      </pre
+    >
+    <button onclick="hide()">Hide</button>
+
+    <script>
+      // let event = new Event('click');
+      // let event1 = new Event('myEvent', {bubbles : true, cancelable: true});
+
+      // document.addEventListener('myEvent', (e) =>{
+      //     alert("Hello from "+ e.target.tagName);
+      //     // e.preventDefault();       // with preventDefault the .dispatchEvent return False
+      // })
+
+      // console.log(elem.dispatchEvent(event1));  // it will generate a event called 'myEvent' and that event will hadled by document
+
+      function hide() {
+        let event = new Event("hide", { cancelable: true });
+
+        // .dispatchEvent will return false if .preventDefault get called
+        if (!rabbit.dispatchEvent(event)) {
+          alert("Action Prevented..!");
+        } else {
+          rabbit.hidden = true;
+        }
+      }
+
+      rabbit.addEventListener("hide", (e) => {
+        if (confirm("miss clicked? Wanna prevent your action..?")) {
+          e.preventDefault();
+        }
+      });
+    </script>
+  </body>
+</html>

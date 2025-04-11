@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            padding-left: 100px;
+        }
+        .parent{
+            width: 300px;
+            aspect-ratio: 1;
+            border: 3px dashed mediumseagreen;
+            
+        }
+        
+        .child{
+            width: 100px;
+            height: 100px;
+            background-color:forestgreen;
+        }
+
+        /* approach 1 
+        .child{
+           
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        } */
+
+        /* approach 2 */
+        /* .parent{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        } */
+
+        /* approach 3 */
+        /* .parent{
+            display: grid;
+            place-items: center;
+        } */
+
+        /* appraoch 4 */
+        .parent{
+            display: flex;
+        }
+        .child{
+            margin: auto;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+</html>

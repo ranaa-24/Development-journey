@@ -5,9 +5,19 @@
 ## Some Good Articles Link
 
 - [**What Exactly is Node.js? Explained for Beginners**](https://www.freecodecamp.org/news/what-is-node-js/)
+
+----
+<center> Depth </center>
+
+- [**How Asynchronous JavaScript Works?**](https://www.codemancers.com/blog/2022-10-26-how-asynchronous-js-works) - Must Read
 - [**What is Node.js and How it Work?**](https://www.youtube.com/watch?v=_eJ6KAb56Gw) - Must watch
+- [**How Node Work? web workers**](https://medium.com/@thiru_73177/event-loops-in-node-js-a-deep-dive-into-libuv-thread-pool-and-event-instances-4054d9c6fde8) - Must read
+- [**Worker Threads : Multitasking in NodeJS**](https://www.linkedin.com/pulse/ultimate-guide-nodejs-performance-feat-clustering-pm2-sutradhar/) - Must Know advance 1
+- [**NodeJS Performance via Multithreading**](https://www.linkedin.com/pulse/ultimate-guide-nodejs-performance-feat-clustering-pm2-sutradhar/) - Must Know advance 2
 - [**The V8 JavaScript Engine**](https://medium.com/@manikmudholkar831995/the-v8-javascript-engine-d1434ca77c96)
-- [**How JavaScript Works: Under the Hood of the V8 Engine**](https://www.freecodecamp.org/news/javascript-under-the-hood-v8/)
+
+----
+
 - [**What is Bun: A High-Performance JavaScript Runtime?**](https://medium.com/code-crafters/what-is-bun-a-high-performance-javascript-runtime-3aaff50aeef7)
 - [**What is NPM? A Beginner's Guide**](https://careerfoundry.com/en/blog/web-development/what-is-npm/)
 - [**What is npm? A Node Package Manager Tutorial for Beginners**](https://www.freecodecamp.org/news/what-is-npm-a-node-package-manager-tutorial-for-beginners/)

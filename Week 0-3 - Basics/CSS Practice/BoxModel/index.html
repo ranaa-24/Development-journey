@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            
+            font-size: 2rem;
+            color: pink;
+            background-color: black;
+            /* BoxModel */
+            height: 20%;
+            width: 200px;
+            /* compound */
+            padding: 20px;
+            margin: 20px auto;
+            border: solid orangered 5px;
+            /* box-sizing: border-box; */
+        }
+
+        .main{
+            margin: 20px auto;
+            width: 500px;
+            border: solid red 3px;
+            padding: 20px;
+            background-color: azure;
+        }
+
+        .main article{
+            border: solid green 2px;
+            padding: 10px;
+            margin: 30px;
+            background-color: aquamarine;
+        }
+
+        .temp{
+            padding: 30px;
+        }
+
+        .main img{
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* border */
+        .main img{
+            border-style: ridge;
+            border-width: 7px;
+            border-color: blueviolet;
+            /* border-left-color: blue; */
+        }
+
+        .container{
+            padding: 20px;
+            margin: 20px auto;
+            width: 500px;
+            border: 3px solid red;
+            background-color: azure;
+        }
+
+        .container h1{
+            text-align: center;
+            margin: 20px 20px;
+            border-left: 50px solid;
+            border-right: 50px solid;
+        }
+
+        .image img{
+            width: 100%;
+            width: 100%;
+
+            border-style: groove;
+            border-width: 6px;
+            border-top-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            border-top-color: rgb(244, 138, 138);
+            border-left-color: rgb(244, 138, 138);
+            border-bottom-color: rgb(227, 133, 133);
+            border-right-color: rgb(227, 133, 133);
+            box-sizing: border-box;
+        }
+
+        .square{
+            text-align: center;
+            margin: 30px auto;
+            height: 50px;
+            width: 50px;
+            background-color: pink;
+            transform: rotate(-45deg);
+            border: 2px groove red;
+            /* //rotate */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">Hello world!</div>
+
+    <div class="main">
+        <img src="wallpaperflare.com_wallpaper.jpg" alt="#n">
+        <article>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum saepe nihil asperiores nam labore ad distinctio perferendis error, natus accusantium odit dignissimos expedita ab necessitatibus ipsum rem sed quis illum.</p>
+        </article>
+    </div>
+
+    <div class="container">
+        <h1>
+            HII, Its Xcin
+        </h1>
+        <div class="image"><img src="wallpaperflare.com_wallpaper.jpg" alt="noth"></div>
+    </div>
+
+    <div class="square"> HII </div>
+</body>
+</html>

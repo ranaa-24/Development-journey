@@ -1,0 +1,35 @@
+
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+
+}
+.main{
+    width: 40%;
+    aspect-ratio: 1;
+    border: 5px solid purple;
+    border-radius: 10px;
+    position: relative;
+}
+
+.box{
+    width: 20%;
+    aspect-ratio: 1;
+    background-color: rgb(255, 0, 119);
+    border-radius: 5%;
+    animation-name: move;
+    animation-duration: 5s;
+    position: absolute;
+}
+
+@keyframes move {
+    0%   {background-color:hsl(330, 100%, 50%); left:0%; top:0%; rotate: 10deg;}
+    25%  {background-color:rgb(195, 0, 255); left:80%; top:80%; rotate: 0deg;}
+    50%  {background-color:rgb(0, 247, 255); left:0%; top:80%; rotate: 0deg;}
+    75%  {background-color:rgb(61, 255, 61); left:80%; top:0%; rotate: 0deg;}
+    100% {background-color:hsl(330, 100%, 50%); left:0%; top:0%; rotate: 10deg;}
+}
+

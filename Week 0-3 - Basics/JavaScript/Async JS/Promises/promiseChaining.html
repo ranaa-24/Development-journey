@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="heading1">Heading 1</h1>
+    <h1 id="heading2">Heading 2</h1>
+    <h1 id="heading3">Heading 3</h1>
+    <h1 id="heading4">Heading 4</h1>
+    <h1 id="heading5">Heading 5</h1>
+</body>
+
+<script>
+       let heading1 = document.getElementById("heading1");
+       let heading2 = document.getElementById("heading2");
+       let heading3 = document.getElementById("heading3");
+       let heading4 = document.getElementById("heading4");
+       let heading5 = document.getElementById("heading5");
+    
+
+       //-------------- Callbck Hell -----------------
+
+    //    function change(element, text, color, time, callbackOnSuccess, callbackOnFailure){
+    //         setTimeout(() => {
+    //             if(element){                    
+    //                 element.textContent = text;
+    //                 element.style.color = color;
+    //                 if(callbackOnSuccess){
+    //                     callbackOnSuccess();  // will call a funciton, probably itself 
+    //                 }
+    //             }
+    //             else{
+    //                 if(callbackOnFailure){
+    //                     callbackOnFailure();
+    //                 }
+    //             }
+                
+    //         }, time);
+    //    }
+
+
+    // // change(heading1, "One", "red", 3000, ()=>{}, ()=>{alert("Element Not Found")})
+    //    change(heading1, "One", "red", 1000, ()=>{
+    //         change(heading2, "Two", "Green", 1000, ()=>{
+    //             change(heading3, "Three", "Blue", 1000, ()=>{
+    //                 change(heading4, "Four", "Yellow", 1000, ()=>{
+    //                     change(heading5, "Five", "Purple", 1000, ()=>{}, ()=>{alert("Element Not Found")})
+    //                 }, ()=>{alert("Element Not Found")});
+    //             }, ()=>{alert("Element Not Found")});
+    //         }, ()=>{alert("Element Not Found")});
+    //    }, ()=>{alert("Element Not Found")});
+
+
+
+
+
+       //------------------- Promise Chaining ----------------------
+
+       function change(element, text, color, time){
+            return new Promise(function(resolve, reject){
+                setTimeout(() => {
+                    if(element){                    
+                        element.textContent = text;
+                        element.style.color = color;
+                        resolve();
+                    }
+                    else{
+                        reject();
+                    }
+                }, time);
+            })
+       }
+
+    //    change(heading1, "One", "red", 1000)
+    //    .then(() => {
+    //         change(heading2, "Two", "green", 1000)  // if we ommit retrurn the promise will go though ans resolved at the same time..
+    //    })
+    //    .then(() => {
+    //         change(heading3, "One", "red", 1000)
+    //    })
+       
+       change(heading1, "One", "red", 1000)
+       .then(() => change(heading2, "Two", "Green", 1000))  // sing;e line arrow function automatically returns 
+       .then(() => change(heading3, "Three", "Blue", 1000))
+       .then(() => change(heading4, "Four", "purple", 1000))
+       .then(() => change(heading5, "Five", "cyan", 1000))
+       .catch(() => alert("Elemnt Not found"));
+
+
+    //    function print(val){
+    //     return new Promise(function(resolve, reject){
+    //         setTimeout(() => {
+    //             resolve(val);
+    //         }, 1000);
+    //     })
+    //    }
+
+    //    print(1000)
+    //         .then(function(val){
+    //             console.log(val);
+    //             // we can pass any value to the next promise
+    //             // return print(2000);
+    //             return "Hyyy From Before You";
+    //         })
+    //         .then((val) => {
+    //             console.log(val);
+    //         })
+
+
+</script>
+</html>

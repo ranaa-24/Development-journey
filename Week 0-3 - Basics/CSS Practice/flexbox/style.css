@@ -1,0 +1,25 @@
+body{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container{
+    width: 50vw;
+    height: 50vh;
+    background-color: transparent;
+    border: 5px solid brown;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    gap: 20px;
+    
+}
+.container div {
+    width: 50px;
+    height: 50px;
+    background-color: purple;
+    border: 2px solid rgb(21, 255, 0);
+    
+}

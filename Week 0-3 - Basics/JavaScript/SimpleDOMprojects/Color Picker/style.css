@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #212121;
+  color: white;
+}
+
+.btn {
+  height: 70px;
+  width: 100%;
+  border: 2px solid black;
+}
+
+#lemonchiffon {
+  background-color: lemonchiffon;
+}
+
+#lightgray {
+  background-color: lightgray;
+}
+
+#navajowhite {
+  background-color: navajowhite;
+}
+
+#lightcyan{
+    background-color: lightcyan;
+}
+
+.container{
+    height: 60vh;
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.container button{
+    padding: 10px;
+    /* background-color: salmon; */
+    /* font-weight: 600; */
+}
