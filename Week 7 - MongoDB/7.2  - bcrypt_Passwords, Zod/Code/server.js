@@ -65,7 +65,7 @@ app.post('/signin', async (req, res) => {
     const { username, password } = req.body;
 
     let user = await Users.findOne({
-        username: username          // usernames are also unique
+        username : username
     })
 
     if(!user) return res.status.json({message : "user doesnt exists!"})

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User's Purchased Courses</title>
+</head>
+<body>
+  <h1>All Courses</h1>
+
+  <% if (courses.length === 0) { %>
+    <p>No courses Uploaded.</p>
+  <% } else { %>
+    <ul>
+      <% courses.forEach(course => { %>
+        <li>
+          <strong><%= course.title %></strong> -ID- <%= course._id %>
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</body>
+</html>

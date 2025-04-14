@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User's Purchased Courses</title>
+</head>
+<body>
+  <h1>Hii <span style="color: brown;"> <%= name %> </span></h1>
+
+  <% if (courses.length === 0) { %>
+    <p>Buy Your First Course.</p>
+  <% } else { %>
+    <h2>Purchased Course IDs - </h2>
+    <ul>
+      <% courses.forEach(course => { %>
+        <li>
+          <strong><%= course.title %></strong> 
+        </li>
+      <% }); %>
+    </ul>
+  <% } %>
+</body>
+</html>

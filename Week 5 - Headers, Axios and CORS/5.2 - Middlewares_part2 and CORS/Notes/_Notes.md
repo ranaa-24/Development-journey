@@ -6,7 +6,7 @@
 - [**What Does `app.use(express.json())` Do in Express?**](https://masteringjs.io/tutorials/express/express-json)
 
 - [**UNDERSTAND CORS truely**](https://www.youtube.com/watch?v=E6jgEtj-UjI)
-- [**CORS Indepth**](https://www.youtube.com/watch?v=tcLW5d0KAYE)
+- [**CORS Indepth**](https://www.youtube.com/watch?v=ZQXKp-ha89c)
 - [**CORS mdn**](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS)
 - [**CORS in Node.js with Express**](https://saragam.medium.com/cors-in-node-js-with-express-99b355e93def)
 - [**How to allow CORS in node.js?**](https://stackoverflow.com/questions/70060783/how-to-allow-cors-in-node-js)
