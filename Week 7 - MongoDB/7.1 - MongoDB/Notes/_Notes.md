@@ -11,6 +11,8 @@
 - [**ORM/ODM?**](https://www.mongodb.com/developer/products/mongodb/mongodb-orms-odms-libraries/)
 - [**What is Mongoose?**](https://www.freecodecamp.org/news/introduction-to-mongoose-for-mongodb-d2a7aa593c57/)
 - [**How to Write Cleaner Code Using Mongoose Schemas**](https://www.freecodecamp.org/news/how-to-write-cleaner-code-using-mongoose-schemas/)
+- [**Schema Methods in MongoDB | Mongoose**](https://medium.com/@armaancodes/schema-methods-in-mongodb-mongoose-efd6e6bb9cc8)
+- [**Mongo DB aggregation**](https://medium.com/@rkpassin132/all-about-aggregation-in-mongodb-d1f0213c867c)
 
 ## 🧠 What is SQL and NoSQL?
 
@@ -375,16 +377,16 @@ app.listen(3000, () => console.log("🚀 Server running on port 3000"));
 
 ### 🛠 Mongoose Methods
 
-| Method                                  | Description                                         |
-| --------------------------------------- | --------------------------------------------------- |
-| `new Model(data)`                       | Creates a new document instance.                    |
-| `.save()`                               | Saves the new document to the DB.                   |
-| `.find()`                               | Gets all documents from a collection.               |
-| `.findById(id)`                         | Gets a document by its `_id`.                       |
-| `.findByIdAndUpdate(id, data, options)` | Updates a document and returns the updated version. |
-| `.findByIdAndDelete(id)`                | Deletes a document by its ID.                       |
-| `.findByIdAndDelete(id)`                | Deletes a document by its ID.                       |
-| `.mongoose.model('ModelName', schema);` | ModelName(plural of collection in mongoDB) is collection name in db     |
+| Method                                  | Description                                                         |
+| --------------------------------------- | ------------------------------------------------------------------- |
+| `new Model(data)`                       | Creates a new document instance.                                    |
+| `.save()`                               | Saves the new document to the DB.                                   |
+| `.find()`                               | Gets all documents from a collection.                               |
+| `.findById(id)`                         | Gets a document by its `_id`.                                       |
+| `.findByIdAndUpdate(id, data, options)` | Updates a document and returns the updated version.                 |
+| `.findByIdAndDelete(id)`                | Deletes a document by its ID.                                       |
+| `.findByIdAndDelete(id)`                | Deletes a document by its ID.                                       |
+| `.mongoose.model('ModelName', schema);` | ModelName(plural of collection in mongoDB) is collection name in db |
 
 ---
 
@@ -408,13 +410,13 @@ app.listen(3000, () => console.log("🚀 Server running on port 3000"));
 
 ## ✅ Common CRUD Operations
 
-| Operation       | Method                                      | Example                                                                 |
-|----------------|---------------------------------------------|-------------------------------------------------------------------------|
-| **Create**      | `new Model()` + `.save()` OR `.create()`   | `const todo = await Todo.create({ title: 'Learn Mongoose' });`         |
-| **Read All**    | `.find()`                                   | `const todos = await Todo.find();`                                     |
-| **Read One**    | `.findById(id)`                             | `const todo = await Todo.findById(req.params.id);`                     |
-| **Update by ID**| `.findByIdAndUpdate(id, data, options)`     | `await Todo.findByIdAndUpdate(id, { completed: true }, { new: true });`|
-| **Delete by ID**| `.findByIdAndDelete(id)`                    | `await Todo.findByIdAndDelete(id);`                                    |
+| Operation        | Method                                   | Example                                                                 |
+| ---------------- | ---------------------------------------- | ----------------------------------------------------------------------- |
+| **Create**       | `new Model()` + `.save()` OR `.create()` | `const todo = await Todo.create({ title: 'Learn Mongoose' });`          |
+| **Read All**     | `.find()`                                | `const todos = await Todo.find();`                                      |
+| **Read One**     | `.findById(id)`                          | `const todo = await Todo.findById(req.params.id);`                      |
+| **Update by ID** | `.findByIdAndUpdate(id, data, options)`  | `await Todo.findByIdAndUpdate(id, { completed: true }, { new: true });` |
+| **Delete by ID** | `.findByIdAndDelete(id)`                 | `await Todo.findByIdAndDelete(id);`                                     |
 
 ---
 
@@ -422,32 +424,421 @@ app.listen(3000, () => console.log("🚀 Server running on port 3000"));
 
 ```js
 // Create using new + save
-const newTodo = new Todo({ title: 'Walk the dog' });
+const newTodo = new Todo({ title: "Walk the dog" });
 await newTodo.save();
 
 // OR using create, will return the created doc
-await Todo.create({ title: 'Read a book' });
+await Todo.create({ title: "Read a book" });
 
 // Read All
 const todos = await Todo.find();
 
 // Read One
-const oneTodo = await Todo.findById('your_id_here');
+const oneTodo = await Todo.findById("your_id_here");
 
 // Update
 const updated = await Todo.findByIdAndUpdate(
-  'your_id_here',
+  "your_id_here",
   { completed: true },
   { new: true, runValidators: true }
 );
 
 // Delete
-await Todo.findByIdAndDelete('your_id_here');
+await Todo.findByIdAndDelete("your_id_here");
 ```
 
 **🧠 Extra CRUD-related Methods
-Method	Use**
+Method Use**
 
-`.findOne(query)`	Find a single doc matching a condition
-`.deleteOne() / .deleteMany()`	Remove docs based on condition
-`.updateOne() / .updateMany`()	Update one or multiple docs
+`.findOne(query)` Find a single doc matching a condition
+`.deleteOne() / .deleteMany()` Remove docs based on condition
+`.updateOne() / .updateMany`() Update one or multiple docs
+
+## Custom methods
+
+to add custom methods to your documents (so each document instance can call that method), you use `schema.methods`
+
+- If you want to write logic that applies to a single document (instance-level), use `schema.methods`
+
+```js
+const mongoose = require("mongoose");
+
+// Step 1: Define Schema
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+});
+
+// Step 2: Add an Instance Method
+userSchema.methods.sayHello = function () {
+  return `Hello, my name is ${this.name}`;
+};
+
+// Step 3: Create Model
+const User = mongoose.model("User", userSchema);
+
+// Step 4: Using the Model with .create()
+async function run() {
+  await mongoose.connect("mongodb://127.0.0.1:27017/test");
+
+  // Create and save document
+  const user = await User.create({ name: "Alice", email: "alice@example.com" });
+
+  // Call custom method on the document
+  console.log(user.sayHello()); // Output: Hello, my name is Alice
+
+  await mongoose.disconnect();
+}
+
+run();
+```
+
+- If you want logic that applies to the Model as a whole (static methods), use `schema.statics`.
+
+```js
+userSchema.statics.findByEmail = function (email) {
+  return this.findOne({ email });
+};
+
+const User = mongoose.model("User", userSchema);
+
+// Usage
+User.findByEmail("alice@example.com").then((user) => console.log(user));
+```
+
+<!-- Aggregation, hooks, relations   : chai code playlist and udemy course  -->
+
+# MongoDB Aggregation
+
+Aggregation is a powerful data processing tool in MongoDB used to **filter, group, sort, transform, or join data**
+
+## Aggregation Pipeline?
+
+Think of it like a series of stages (steps in a pipeline) where each stage transforms the data and passes it to the next.
+
+### Common Aggregation Stages:
+
+- `$match` Filters documents (like .find())
+
+- `$group` Groups and calculates totals/counts
+
+- `$project` Selects/reshapes fields
+
+- `$sort` Sorts the result
+
+- `$lookup` Joins data from another collection
+
+![alt text](image-8.png)
+
+## 1. MongoDB Relationships
+
+### 🔗 Referenced Documents using `ref` and `populate()` (Mongoose)
+
+🧾 User Schema
+
+```js
+const mongoose = require("mongoose");
+const userSchema = new mongoose.Schema({
+  name: String,
+});
+const User = mongoose.model("User", userSchema);
+```
+
+📝 Post Schema with `ref`
+
+```js
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User", //reff the User collection
+  },
+});
+const Post = mongoose.model("Post", postSchema);
+```
+
+Now, if you want to fetch the author details when querying a post, you use:
+
+```js
+Post.find()
+  .populate("author") // This replaces the ObjectId with actual User data
+  .then((posts) => console.log(posts));
+```
+
+### Explaination:
+
+```js
+author: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "User"
+}
+```
+
+- `ref: "User"` tells Mongoose what collection to look in (the users collection).
+
+- The actual value stored in `author` is an ObjectId, which refers to one specific user document.
+
+### 2. $lookup (Native MongoDB Aggregation for Relationships)
+
+If you're using the MongoDB aggregation framework, the $lookup stage lets you join documents from another collection.
+
+```js
+db.posts.aggregate([
+  {
+    $lookup: {
+      from: "users", // other collection
+      localField: "author", // field in posts
+      foreignField: "_id", // field in users
+      as: "authorInfo", // output array field
+    },
+  },
+]);
+```
+
+Mongo DB has worst syntax learn : [Blog](https://medium.com/@rkpassin132/all-about-aggregation-in-mongodb-d1f0213c867c) and
+[Video](https://www.youtube.com/watch?v=MWmMvudBgFU)
+
+### 🔄 Aggregation Stage vs. Mongoose Equivalent
+
+| Aggregation Stage | Mongoose Equivalent (Query API) | Use Case                                 |
+| ----------------- | ------------------------------- | ---------------------------------------- |
+| `$match`          | `.find(filter)` or `.where()`   | Filter documents                         |
+| `$sort`           | `.sort()`                       | Sort results                             |
+| `$limit`          | `.limit()`                      | Limit number of docs                     |
+| `$skip`           | `.skip()`                       | Skip N docs (pagination)                 |
+| `$project`        | `.select()`                     | Include/exclude fields                   |
+| `$lookup`         | `.populate()`                   | Join related documents                   |
+| `$unwind`         | ❌ No direct equivalent         | Flatten arrays (use aggregation only)    |
+| `$group`          | ❌ No direct equivalent         | Grouping, totals, sums (use aggregation) |
+
+> Use `.aggregate()` [provided by mongoose] when you need advanced logic like `$group`, `$unwind`, or multiple joins.
+
+---
+
+```js
+// Simple query without aggregation
+Post.find({ published: true })
+  .sort({ createdAt: -1 }) // like $sort
+  .limit(10) // like $limit
+  .select("title author") // like $project
+  .populate("author"); // like $lookup
+```
+
+## 🔧 Mongoose Hooks (Middleware)
+
+Hooks are functions that run **before or after** specific operations like `.save()`, `.find()`, `.updateOne()`, etc.
+
+### Types:
+
+- **Pre hooks**: Run _before_ the operation.
+- **Post hooks**: Run _after_ the operation.
+
+### Supported Operations:
+
+- Document middleware: `save`, `validate`, `remove`, `deleteOne`
+- Query middleware: `find`, `findOne`, `updateOne`, `findOneAndUpdate`, etc.
+
+---
+
+## 🧪 Real World Example: Hashing Password Before Save
+
+### 📁 `models/User.js`
+
+```js
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+
+const userSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+});
+
+// Pre-save hook to hash password
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next(); // only hash if changed
+
+  try {
+    const hashed = await bcrypt.hash(this.password, 10);
+    this.password = hashed;
+    next();
+  } catch (err) {
+    next(err);
+  }
+});
+
+// Post-save hook (logging)
+userSchema.post("save", function (doc) {
+  console.log("✅ User saved:", doc.username);
+});
+
+const User = mongoose.model("User", userSchema);
+module.exports = User;
+```
+
+### in App
+
+```js
+const mongoose = require("mongoose");
+const User = require("./models/User");
+
+mongoose
+  .connect("mongodb://localhost:27017/test")
+  .then(() => console.log("Connected"))
+  .catch(console.error);
+
+async function createUser() {
+  const user = new User({ username: "john_doe", password: "123456" });
+  await user.save(); // password will be hashed automatically
+}
+
+createUser();
+```
+
+## Example : Blog app
+
+We have:
+
+- `User`: who creates posts
+
+- `Post`: has a title, content, author
+
+- `Comment`: belongs to a post and user
+
+### 1: Define Models (with Hooks)
+
+📁 `models/User.js`
+
+```js
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+});
+
+// Pre-save hook to hash password
+userSchema.pre("save", async function (next) {
+  if (!this.isModified("password")) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
+});
+
+// Post-save log
+userSchema.post("save", function (doc) {
+  console.log("User created:", doc.username);
+});
+
+module.exports = mongoose.model("User", userSchema);
+```
+
+📁 `models/Post.js`
+
+```js
+const mongoose = require("mongoose");
+
+const postSchema = new mongoose.Schema({
+  title: String,
+  content: String,
+  views: Number,
+  author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+});
+
+// Log when a post is created
+postSchema.post("save", function (doc) {
+  console.log("New post titled:", doc.title);
+});
+
+module.exports = mongoose.model("Post", postSchema);
+```
+
+📁 `models/Comment.js`
+
+```js
+const mongoose = require("mongoose");
+
+const commentSchema = new mongoose.Schema({
+  text: String,
+  post: { type: mongoose.Schema.Types.ObjectId, ref: "Post" },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+});
+
+module.exports = mongoose.model("Comment", commentSchema);
+```
+
+### Usage Example (`index.js`)
+
+```js
+const mongoose = require("mongoose");
+const User = require("./models/User");
+const Post = require("./models/Post");
+const Comment = require("./models/Comment");
+
+async function run() {
+  await mongoose.connect("mongodb://localhost:27017/blogDB");
+
+  // Create a user
+  const user = await User.create({ username: "alice", password: "secret123" });
+
+  // Create a post
+  const post = await Post.create({
+    title: "MongoDB Hooks & Aggregation",
+    content: "This is a cool guide.",
+    views: 100,
+    author: user._id,
+  });
+
+  // Create a comment
+  await Comment.create({
+    text: "Very helpful!",
+    post: post._id,
+    user: user._id,
+  });
+
+  // 🔎 Fetch post with author populated
+  const populatedPost = await Post.findOne({ _id: post._id }).populate(
+    "author"
+  );
+  console.log("Post with populated author:", populatedPost);
+
+  // 🔎 Find posts with views > 50 (like $match + $gt)
+  const popularPosts = await Post.find({ views: { $gt: 50 } }).populate(
+    "author"
+  );
+  console.log("Popular posts:", popularPosts);
+
+  // 🔎 Aggregation: Join comments with user and post data
+  const commentsWithDetails = await Comment.aggregate([
+    {
+      $lookup: {
+        from: "users",
+        localField: "user",
+        foreignField: "_id",
+        as: "userInfo",
+      },
+    },
+    { $unwind: "$userInfo" },
+    {
+      $lookup: {
+        from: "posts",
+        localField: "post",
+        foreignField: "_id",
+        as: "postInfo",
+      },
+    },
+    { $unwind: "$postInfo" },
+    {
+      $project: {
+        text: 1,
+        "userInfo.username": 1,
+        "postInfo.title": 1,
+      },
+    },
+  ]);
+
+  console.log("Joined comment details:", commentsWithDetails);
+}
+
+run().catch(console.error);
+```

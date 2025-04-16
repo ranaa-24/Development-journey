@@ -30,8 +30,7 @@ async function showPurchaseCourse(req, res) {
           // Step 3: Use $in to find all matching courses
         const courses = await Courses.find({_id : { $in : courseIDs}});
         //OR :   const courses = await Courses.find({ _id: { $in: courseIds } }, 'title'); // array of titles
-
-      
+ 
         return res.render('purchasedCourses', {name : user.firstName, courses : courses})
     } catch(err){
         return res.status(500).json({message : err.message})
