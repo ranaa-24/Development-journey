@@ -4,7 +4,7 @@
 
 - [**What are Components and Types of Components in React JS**](https://medium.com/@reactmasters.in/what-are-components-and-types-of-components-in-react-js-4e2642b136a2)
 
-- [**React Hooks Explained Simply**](https://daily.dev/blog/react-hooks-explained-simply#:~:text=Hooks%20are%20special%20functions%20in,needing%20to%20write%20class%20components.)
+- [**React Hooks Explained In depth**](https://javascript.plainenglish.io/react-hooks-the-complete-guide-5c176ca825f6) -Must read
 - [**State?**](https://react.dev/learn/state-a-components-memory) - Must read
 
 - [**useState in React**](https://blog.logrocket.com/guide-usestate-react/#:~:text=start%20with%20use%20.-,What%20is%20the%20useState%20Hook%3F,the%20setter%20function%20is%20called.)
