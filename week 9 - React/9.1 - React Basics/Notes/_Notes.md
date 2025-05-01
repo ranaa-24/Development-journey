@@ -8,11 +8,13 @@
 
 ---
 
+- [**React rendering concepts**](https://medium.com/@shivambhadani_/mastering-advanced-reactjs-concepts-essential-knowledge-for-every-frontend-developer-8123cf0b13ab) - Must read
 - [**Video on Rendering**](https://www.youtube.com/watch?v=mECV6nGOqNo)
 - [**Video in Depth**](https://www.youtube.com/watch?v=7YhdqIR2Yzo)
 - [**How React Works**](https://medium.com/@ruchivora16/react-how-react-works-under-the-hood-9b621ee69fb5)
 - [**React rerenders, why?**](https://www.joshwcomeau.com/react/why-react-re-renders/)
 - [**Understand How Rendering Works in React**](https://www.telerik.com/blogs/understand-how-rendering-works-react)
+- [**React Fiber - The core of reconciliation**](https://github.com/acdlite/react-fiber-architecture)
 
 - [**How State Works in React – Explained with Code Examples**](https://www.freecodecamp.org/news/what-is-state-in-react-explained-with-examples/)
 
@@ -341,12 +343,12 @@ JSX lets you put markup into JavaScript, Curly braces let you “escape back” 
 > if we want any js code inside html we have to use {}, any other part just use normal js
 
 ```js
-function App(){
-    // any js code or html 
-    return(
-      // only one ele that is html <>, so use {} for back to js 
-      <h1>{user.name}</h1>
-    )
+function App() {
+  // any js code or html
+  return (
+    // only one ele that is html <>, so use {} for back to js
+    <h1>{user.name}</h1>
+  );
 }
 ```
 
@@ -364,16 +366,17 @@ function App{
   )
 }
 ```
+
 In JSX, JavaScript expressions are written inside curly braces, and since JavaScript objects also use curly braces, the styling in the example above is written inside two sets of curly braces {{}}.
 
-OR 
+OR
 
 ```js
 function App() {
   const btnStyle = {
-    backgroundColor: 'blue',
-    color: 'white',
-    padding: '10px',
+    backgroundColor: "blue",
+    color: "white",
+    padding: "10px",
   };
 
   return <button style={btnStyle}>Click Me</button>;
@@ -381,6 +384,7 @@ function App() {
 ```
 
 - **Importing CSS as a side effect (external CSS)**
+
 ```css
 /* styles.css */
 .button {
@@ -389,16 +393,17 @@ function App() {
   padding: 10px;
 }
 ```
+
 ```js
 // App.jsx
-import './styles.css'; // This is the side effect import
+import "./styles.css"; // This is the side effect import
 
 function App() {
   return <button className="button">Click Me</button>;
 }
 ```
 
-## Conditional rendering 
+## Conditional rendering
 
 ```jsx
 let content;
@@ -407,59 +412,51 @@ if (isLoggedIn) {
 } else {
   content = <LoginForm />;
 }
-return (
-  <div>
-    {content}
-  </div>
-);
+return <div>{content}</div>;
 ```
 
-OR 
+OR
 
 ```jsx
-<div>
-  {isLoggedIn ? <AdminPanel /> : <LoginForm />}
-</div>
+<div>{isLoggedIn ? <AdminPanel /> : <LoginForm />}</div>
 ```
 
-OR 
+OR
 
 ```js
-<>
-  {isLoggedIn && <AdminPanel/>}
-</>
+<>{isLoggedIn && <AdminPanel />}</>
 ```
->&& - returns first falsy value, or the last one.
-|| returns first truthy value
 
-## Rendering lists 
+> && - returns first falsy value, or the last one.
+> || returns first truthy value
+
+## Rendering lists
 
 ```js
 const products = [
-  { title: 'Cabbage', isFruit: false, id: 1 },
-  { title: 'Garlic', isFruit: false, id: 2 },
-  { title: 'Apple', isFruit: true, id: 3 },
+  { title: "Cabbage", isFruit: false, id: 1 },
+  { title: "Garlic", isFruit: false, id: 2 },
+  { title: "Apple", isFruit: true, id: 3 },
 ];
 
 export default function ShoppingList() {
-  const listItems = products.map(product =>
+  const listItems = products.map((product) => (
     <li
       key={product.id}
       style={{
-        color: product.isFruit ? 'magenta' : 'darkgreen'
+        color: product.isFruit ? "magenta" : "darkgreen",
       }}
     >
       {product.title}
     </li>
-  );
+  ));
 
-  return (
-    <ul>{listItems}</ul>
-  );
+  return <ul>{listItems}</ul>;
 }
 ```
 
 ### What is key used for in React?
+
 The `key` prop helps React identify which items in a list have:
 
 - Changed
@@ -468,6 +465,6 @@ The `key` prop helps React identify which items in a list have:
 
 This allows React to efficiently re-render only the parts of the UI that need updating, instead of re-rendering the whole list from scratch.
 
->key must be unique among siblings.
+> key must be unique among siblings.
 
 React will show a warning. if key not been used
