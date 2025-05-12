@@ -455,7 +455,7 @@ export default function ShoppingList() {
 }
 ```
 
-### What is key used for in React?
+### What is key used for in React? [watch](https://www.youtube.com/watch?v=vXJkeZf-4-4)
 
 The `key` prop helps React identify which items in a list have:
 
