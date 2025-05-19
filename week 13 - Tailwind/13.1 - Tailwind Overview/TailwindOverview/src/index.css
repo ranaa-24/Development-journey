@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* not recomended  */
+/* .my-style{
+    color: red;
+} */
+
+@layer utilities{
+  .costom-style{
+    color: red;
+    font-size: larger;
+  }
+}
+
+@layer components{
+    .card{
+        @apply bg-amber-400
+    }
+}
+
+/* used in w-<numver> */
+@theme{
+  --spacing: 4px
+}
