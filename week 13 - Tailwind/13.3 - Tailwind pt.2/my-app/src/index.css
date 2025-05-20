@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --color-primary-bg: #000000;
+  --color-primary-border: rgb(234, 228, 213, 0.1);
+  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --color-main-bg : #EAE4D5;
+  --color-hover : #B6B09F;
+  --color-main-card : rgb(242, 242, 242);
+  --color-product : #F2C078;
+  --color-sub-product : #FAEDCA;
+  --breakpoint-new-br : 1200px;
+}
+
+
+@utility side-width {
+    width : 380px
+}
+@utility side-margin {
+    margin-left : 380px
+}
+
+@utility half-side-width {
+    width : 90px
+}
+@utility half-side-margin {
+    margin-left : 90px
+}
+
+/* @layer components{
+    .card{
+
+} */
+
+/* @utility my-util{
+
+} */
