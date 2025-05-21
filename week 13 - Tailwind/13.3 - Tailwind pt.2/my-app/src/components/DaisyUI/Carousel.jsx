@@ -7,7 +7,7 @@ import img6 from '../../assets/img6.jpg';
 
 function Carousel() {
     return (
-        <div className="carousel rounded-box w-96 h-[500px] shadow-[0px_2px_7px_1px_rgba(0,_0,_0,_0.1)]">
+        <div className="carousel rounded-box w-96 h-[500px] shadow-[0px_2px_7px_1px_rgba(0,_0,_0,_0.1)] cursor-move">
             <div className="carousel-item w-full">
                 <img
                     src={img1}

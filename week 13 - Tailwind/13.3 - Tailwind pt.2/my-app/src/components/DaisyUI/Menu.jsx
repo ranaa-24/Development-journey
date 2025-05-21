@@ -1,7 +1,7 @@
 
 function Menu() {
     return (
-        <ul className="menu bg-main-card lg:menu-horizontal rounded-box size-60 my-5  flex justify-center items-center shadow-[0px_2px_7px_1px_rgba(0,_0,_0,_0.1)]">
+        <ul className="menu bg-main-card dark:bg-main-bg lg:menu-horizontal rounded-box size-60 my-5  flex justify-center items-center shadow-[0px_2px_7px_1px_rgba(0,_0,_0,_0.1)]">
             <li>
                 <a>
                     <svg

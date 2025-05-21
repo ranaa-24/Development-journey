@@ -1,10 +1,13 @@
 import Home from "./components/Home/Home"
-function App() {
+import { DarkModeProvider } from "./context/darkMode.context"
+
+
+function App() {  
   return (
-    <>
+    <DarkModeProvider>
       <Home />
-    </>
+    </DarkModeProvider>
   )
 }
 
-export default App
+export default App 

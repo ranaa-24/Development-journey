@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-primary-bg: #000000;
   --color-primary-border: rgb(234, 228, 213, 0.1);
