@@ -1,0 +1,31 @@
+/* th, td{
+    border-color: rgb(136, 255, 249);
+    padding: 10px;
+
+} */
+/* tr:nth-child(even){
+    background-color: blue;
+} */
+
+tr{
+    border-bottom: 1px solid white;
+}
+
+tr:hover{
+    background-color: antiquewhite;
+    color: black;
+}
+
+caption{
+    color: aqua;
+}
+
+table{
+    /* border-color: rgb(255, 141, 232); */
+    border-collapse: collapse;
+    border-spacing: 10px;
+}
+
+table.table2{
+    background-color: blue;
+}

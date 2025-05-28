@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #vdo{
+            text-align: center;
+            margin: 20px;
+        }
+        #button1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="button1"><button onclick="playPause()">play/pause</button></div>
+    <div id="vdo"><video id="video1" src="videoEX.mp4" controls muted height="250px" width="400px" poster="bearThumbnail.png">video not supported</video></div>
+
+    <embed src="https://www.w3schools.com/html/html_object.asp" type="">b
+    <script>
+        var myVideo = document.getElementById("video1");
+        function playPause(){
+            if(myVideo.paused)
+                myVideo.play();
+            else    
+                myVideo.pause();
+        }
+    </script>
+</body>
+</html>

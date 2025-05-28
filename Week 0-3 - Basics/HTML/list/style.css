@@ -1,0 +1,13 @@
+ul{
+    background-color: aqua;
+    padding: 10px;
+    border: 5px;
+    border-color: bisque;
+    border-style: dashed;
+}
+
+li:hover{
+    background-color: brown;
+    color: whitesmoke;
+    animation: backwards;
+}
