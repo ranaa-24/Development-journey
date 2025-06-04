@@ -1,0 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap");
+@import "tailwindcss";
+@plugin "daisyui";
+@import "tailwindcss-animated";
+
+@theme {
+  --breakpoint-sm: 491px;
+  --breakpoint-md: 770px;
+  --font-main: "Nunito Sans", sans-serif;
+  --color-primary-paint: #347928;
+  --color-secondary-paint: #c0eba6;
+  --color-hover: #c0eba644;
+  --color-sideShade: #f0bb78;
+  --color-sideShade-hover: #f0bb7844;
+}
+
+
+::selection {
+  background: var(--color-sideShade-hover);
+}
