@@ -3,7 +3,10 @@
 
 ## Articles/Blogs Link:
 - [**Learn TypeScript – The Ultimate Beginners Guide**](https://www.freecodecamp.org/news/learn-typescript-beginners-guide/)
+
+- [**Typescript handbook**](https://www.typescriptlang.org/docs/handbook/intro.html) +1 OG
 - [**Typescript cheatsheet**](https://rmolinamir.github.io/typescript-cheatsheet/#table-of-contents) +1 OG
+
 - [**Mastering Object-Oriented Programming with TypeScript**](https://dev.to/rajrathod/mastering-object-oriented-programming-with-typescript-encapsulation-abstraction-inheritance-and-polymorphism-explained-c6p)
 
 - [**Compiling TypeScript**](https://code.visualstudio.com/docs/typescript/typescript-compiling#:~:text=A%20tsconfig.json%20file%20defines,help%20you%20along%20the%20way.)
