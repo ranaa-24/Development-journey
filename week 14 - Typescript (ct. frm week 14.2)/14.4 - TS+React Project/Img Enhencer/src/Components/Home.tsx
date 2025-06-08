@@ -2,20 +2,54 @@ import video from '../assets/bg_video.mp4';
 import Music from "./Music";
 import Button from './Button';
 import { Link } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
 function Home() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+ 
+  // will display the actaul content when video loads 
+  const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+
+    const handleLoaded: () => void = () => {
+      setIsVideoLoaded(true);
+    }
+
+    if (video) {
+      video.addEventListener("canplaythrough", handleLoaded);
+    }
+
+    return () => {
+      if (video) {
+        video.removeEventListener("canplaythrough", handleLoaded);
+      }
+    };
+
+  }, []);
+
 
   return (
     <>
-      <div className="relative w-full h-screen font-main overflow-hidden">
+      {!isVideoLoaded &&
+        <div id="loading-screen" className="loading-screen">
+          <div className="loader">
+          </div>
+        </div>
+      }
+
+      {/* // we must hide this, conditional rendering wont work.. if we first render a loading not the video, then how would the video load??  */}
+      <div className={`relative w-full h-screen font-main overflow-hidden ${isVideoLoaded ? "block" : "hidden"}`}>
 
         <video
+          ref={videoRef}
           src={video}
           autoPlay
           muted
           loop
           className="absolute top-0 left-0 w-full h-full object-cover"
-          >
+        >
         </video>
 
         <div aria-label='overlay' className="absolute top-0 left-0 w-full h-full bg-[#0000002e]"></div>
