@@ -1,0 +1,30 @@
+500 react questions : https://github.com/sudheerj/reactjs-interview-questions
+
+Airbnb style guide: https://github.com/airbnb/javascript
+
+
+
+
+Akshy Saini : https://www.youtube.com/playlist?list=PLlasXeu85E9eV5xUEgrWUB8NAUvNZGsK0
+
+react mechine coding round : https://www.youtube.com/playlist?
+list=PLlasXeu85E9cciv04MYWscodnbRFqACsH
+
+react mechine coding round 2: https://www.youtube.com/playlist?list=PLAjOh0819rC0STXuY733rXX_f8L4xEYo_
+
+top fd interview qs: (+1)- https://youtu.be/9rd-3zhdNuA?si=fgNLaqXEj420I8eP
+
+react mechine coding round 3 : https://www.youtube.com/playlist?list=PLF7ny2pVBcm29ri1Z50QXOo3gIiWbVs6u
+
+react qs : https://www.youtube.com/playlist?list=PLKhlp2qtUcSaSnNnNffRPIU3DRQ2xAdj8
+
+another : https://www.youtube.com/playlist?list=PLKhlp2qtUcSYQojD5G-ElgHezoCyq2Hgo
+
+js : https://www.youtube.com/playlist?list=PLinedj3B30sDi0keEOQU3n5p3Op28eN2e
+
+interview : https://www.youtube.com/playlist?list=PLAjOh0819rC2W_-eq9U7-PnY40yZZyirG
+
+coding react qs : https://www.greatfrontend.com/blog/practice-50-react-coding-interview-questions-with-solutions
+
+
+frontend practice : https://www.greatfrontend.com/interviews/get-started

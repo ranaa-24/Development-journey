@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mesmerizing Blooming Roses</title>
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(circle at center, #2c001e, #000);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .bouquet {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .rose {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      transform: translate(-50%, -50%) scale(0);
+      animation: bloom 2s ease-out forwards;
+      filter: drop-shadow(0 0 8px red);
+    }
+
+    .petal {
+      position: absolute;
+      width: 20px;
+      height: 40px;
+      background: radial-gradient(circle, #ff4d4d, #b30000);
+      border-radius: 50% 50% 0 0;
+      transform-origin: bottom center;
+      opacity: 0;
+      animation: open 2s ease-out forwards;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+    }
+
+    .rose::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 8px;
+      background: yellow;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 10px yellow;
+    }
+
+    @keyframes bloom {
+      to {
+        transform: translate(-50%, -50%) scale(1.2);
+      }
+    }
+
+    @keyframes open {
+      0% {
+        transform: rotate(0deg) scaleY(0.3);
+        opacity: 0;
+      }
+      100% {
+        transform: rotate(var(--angle)) scaleY(1);
+        opacity: 1;
+      }
+    }
+
+    /* Floating particles */
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      animation: floatUp 10s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(-600px) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bouquet" id="bouquet"></div>
+
+  <script>
+    const bouquet = document.getElementById("bouquet");
+
+    function createRose(x, y, delay) {
+      const rose = document.createElement("div");
+      rose.className = "rose";
+      rose.style.top = `${y}%`;
+      rose.style.left = `${x}%`;
+      rose.style.animationDelay = `${delay}s`;
+
+      for (let i = 0; i < 8; i++) {
+        const petal = document.createElement("div");
+        petal.className = "petal";
+        const angle = i * 45;
+        petal.style.setProperty('--angle', `${angle}deg`);
+        petal.style.transform = `rotate(${angle}deg) translateY(-20px)`;
+        petal.style.animationDelay = `${delay + 0.5}s`;
+        rose.appendChild(petal);
+      }
+
+      bouquet.appendChild(rose);
+    }
+
+    const rosePositions = [
+      [50, 50], [40, 60], [60, 60],
+      [45, 70], [55, 70], [35, 50],
+      [65, 50], [50, 40], [42, 45], [58, 45]
+    ];
+
+    rosePositions.forEach((pos, i) => {
+      createRose(pos[0], pos[1], i * 0.4);
+    });
+
+    // Create floating particles
+    for (let i = 0; i < 60; i++) {
+      const particle = document.createElement("div");
+      particle.className = "particle";
+      particle.style.left = `${Math.random() * 100}vw`;
+      particle.style.top = `${Math.random() * 100 + 100}px`;
+      particle.style.animationDelay = `${Math.random() * 10}s`;
+      particle.style.animationDuration = `${5 + Math.random() * 5}s`;
+      document.body.appendChild(particle);
+    }
+  </script>
+</body>
+</html>
+
