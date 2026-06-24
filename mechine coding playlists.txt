@@ -2,7 +2,10 @@
 
 Airbnb style guide: https://github.com/airbnb/javascript
 
+top js qs: https://github.com/greatfrontend/top-javascript-interview-questions
+https://github.com/sudheerj/javascript-interview-questions
 
+js design pattern: https://youtu.be/K1fYDNaUUN0?si=A82SjS1-VJ1_Lx2Y
 
 
 Akshy Saini : https://www.youtube.com/playlist?list=PLlasXeu85E9eV5xUEgrWUB8NAUvNZGsK0
@@ -28,3 +31,7 @@ coding react qs : https://www.greatfrontend.com/blog/practice-50-react-coding-in
 
 
 frontend practice : https://www.greatfrontend.com/interviews/get-started
+
+api design: https://youtu.be/XvFmUE-36Kc?si=RHoSViYbeFz6A5U5
+
+frontend system design: https://youtube.com/playlist?list=PL4OG1laG0gW9BNGye9I8LYroxIDoMU5Er&si=pPjwwisyjAHh19F7
