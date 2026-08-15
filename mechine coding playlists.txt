@@ -5,8 +5,7 @@ Airbnb style guide: https://github.com/airbnb/javascript
 top js qs: https://github.com/greatfrontend/top-javascript-interview-questions
 https://github.com/sudheerj/javascript-interview-questions
 
-js design pattern: https://youtu.be/K1fYDNaUUN0?si=A82SjS1-VJ1_Lx2Y
-
+js design pattern playlist: https://www.youtube.com/playlist?list=PLL4sNmZle1wC7pwx7m6Put2jS4d6bcYj8
 
 Akshy Saini : https://www.youtube.com/playlist?list=PLlasXeu85E9eV5xUEgrWUB8NAUvNZGsK0
 

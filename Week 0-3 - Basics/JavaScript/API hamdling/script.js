@@ -34,7 +34,7 @@ async function getWeatherData(cityName) {
     let res = await fetch(urlEndPoint);
     if (!res.ok) throw new Error("City Not Found");
 
-    let jsonData = await res.json();
+    let jsonData = await res.json(); 
     return jsonData;
 }
 
