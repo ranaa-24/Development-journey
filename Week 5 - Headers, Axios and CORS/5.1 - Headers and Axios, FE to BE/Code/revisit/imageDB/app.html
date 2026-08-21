@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="waifu" id="select">
+        <option value="reze">Reze</option>
+        <option value="shinobu">shinobu</option>
+        <option value="makima">Makima</option>
+        <option value="marin">Marin</option>
+        <option value="kaoruko">kaoruko</option>
+    </select>
+    <br>
+    <img src="./images/reze.jpg" alt="" id="img" height="400px" >
+
+
+    <script>
+        let select = document.querySelector('#select');
+        let img = document.querySelector('#img');
+
+        select.addEventListener('change', async () => {
+            const res = await fetch(`http://127.0.0.1:3000/user/${select.value}`);
+            const blob = await res.blob();
+            const url = URL.createObjectURL(blob);
+            img.src = url;
+        })
+        
+    </script>
+</body>
+</html>
