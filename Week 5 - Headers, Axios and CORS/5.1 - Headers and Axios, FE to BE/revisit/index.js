@@ -1,11 +1,22 @@
-const express = require('express');
+import express from 'express'
+import cors from 'cors'
+
 const app = express();
 
-app.get('/', (req, res)=>{
-    console.log(req.headers['user-agent']);
-    res.setHeader("connection", "close")
-    return res.send("<h1>Hello<h2"); 
-})
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use(cors());
 
+app.get('/', (req, res) => {
+    res.status(200).send('Server is running');
+});
 
-app.listen(3000, () => console.log("Started.."));
+app.post('/data', (req, res) => {
+    const body = req.body ?? {};
+    console.log(body);
+    return res.status(200).send({ msg: "done" });
+});
+
+app.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
+});``

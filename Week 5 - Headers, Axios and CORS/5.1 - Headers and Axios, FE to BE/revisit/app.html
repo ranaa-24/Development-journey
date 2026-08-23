@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios@<x.x.x>/dist/axios.min.js"></script>
+</head>
+<body>
+    <form action="/:data" method="post">
+        <input type="text" name="name" placeholder="name">
+        <input type="password" name="password" placeholder="password">
+        <button type="submit">login</button>
+    </form>
+
+    <script>
+        // (async() => {
+        //     let res = await fetch('http://127.0.0.1:3000/data', {
+        //         method: "POST", 
+        //         headers:{
+        //             "Content-Type": "application/json"
+        //         },
+        //         body: JSON.stringify({
+        //             name: 'rana', 
+        //             age: 22
+        //         })
+        //     });
+
+        //     let data = await res.text();
+        //     alert(data)
+        // })();   
+
+        // const form = document.querySelector('form');
+
+        // form.onsubmit = async(event) => {
+        //     event.preventDefault()
+        //     let data = new URLSearchParams(new FormData(form));
+        
+        //     let res = await fetch('http://127.0.0.1:3000/data', {
+        //         method: "POST", 
+        //         body: data
+        //     });
+
+        //     let r = await res.json();
+        //     alert(r.msg)
+        // }
+
+
+    </script>
+</body>
+</html>
