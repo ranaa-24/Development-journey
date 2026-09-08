@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome creep</h1>
+    <button id="btn" onclick="showImg()">Show private image</button>
+    <img src="" alt="" height="300px">
+
+
+
+
+    <script>
+        let btn = document.querySelector('#btn');
+        let img = document.querySelector('img');
+
+        async function showImg(){
+            try{
+                let res = await fetch('http://127.0.0.1:3000/private/image', {
+                headers: {'Authorization' : 'Bearer iloveisha'}
+                });
+
+                if(!res.ok) throw new Error('Unauthorized');
+
+                let blob = await res.blob();
+
+                let objurl = URL.createObjectURL(blob);
+
+                img.src = objurl;
+
+            }catch(err){
+                alert(err.message);
+            }
+        }
+
+
+    </script>
+</body>
+</html>

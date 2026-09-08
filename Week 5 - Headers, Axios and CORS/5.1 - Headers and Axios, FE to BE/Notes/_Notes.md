@@ -376,6 +376,13 @@ async function fetchData() {
 
 fetchData();
 ```
+---
+
+#  Interceptors
+
+[Read](https://axios.rest/pages/advanced/interceptors.html)
+
+
 
 ---
 
