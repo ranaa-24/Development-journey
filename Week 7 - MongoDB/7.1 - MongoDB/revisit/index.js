@@ -24,7 +24,7 @@ const goalSchema = new mongoose.Schema({
 const Goal = mongoose.model('goal', goalSchema);
 
 
-const MONGODB_URI = 'mongodb+srv://rana24:1d5i4mKZAzYRbYdK@cluster0.q1jdeuo.mongodb.net/practice';
+const MONGODB_URI = ""
 
 mongoose.connect(MONGODB_URI)
     .then(() => console.log('DB Connected..'))
