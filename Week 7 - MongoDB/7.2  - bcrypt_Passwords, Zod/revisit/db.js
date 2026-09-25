@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 async function conn() {
-    return mongoose.connect('mongodb+srv://rana24:1d5i4mKZAzYRbYdK@cluster0.q1jdeuo.mongodb.net/Practice')
+    return mongoose.connect('')
 }
 
 const userSchema = mongoose.Schema({
