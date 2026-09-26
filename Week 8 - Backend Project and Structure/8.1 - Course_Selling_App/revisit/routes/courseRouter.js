@@ -7,5 +7,4 @@ router.get('/', getAllCourses);
 router.post('/purchase', purchaseCourse);
 
 
-
 module.exports = router;
