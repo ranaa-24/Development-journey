@@ -25,7 +25,7 @@ app.use('/admin', adminRouter);
 // TODOs: /user/purchases and the bellow are need to define and also the coursses and ppurchases models
 // ----------------------------------------
 
-// /course/purchase, /courses/  --> get all courses preview
+// /course/purchase?id=, /courses/  --> get all courses preview
 app.use('/courses', authenticate, courseRouter)
 
 

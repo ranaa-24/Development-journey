@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
+const Purchase = require('../models/Purchases');
 
 
 
@@ -37,7 +38,27 @@ async function sigin(req, res) {
 }
 
 async function getPurchasedCourses(req, res) {
-    
+    try {
+        const purchases = await Purchase.find({ user: req.user.id })
+            .populate('courseId', 'title description')
+            .lean();
+
+        if (!purchases || purchases.length === 0) {
+            return res.status(200).send({ msg: "Empty Inventory", purchases: [] });
+        }
+
+        const mod = purchases
+            .filter((purchase) => purchase.courseId)
+            .map((purchase) => ({
+                title: purchase.courseId.title,
+                description: purchase.courseId.description
+            }));
+
+        return res.send({ purchases: mod });
+    } catch (err) {
+        console.log("err userController", err.message);
+        return res.status(500).send({ err: "Internal Server error!" });
+    }
 }
 
 
